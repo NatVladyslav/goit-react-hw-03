@@ -1,0 +1,7 @@
+.formikForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+    margin-bottom: 20px;
+}

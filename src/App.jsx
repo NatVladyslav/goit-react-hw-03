@@ -1,16 +1,33 @@
 import './App.css'
+import { useState } from 'react'
+import ContactForm from './components/ContactForm/ContactForm'
+import SearchBox from './components/SearchBox/SearchBox'
+import ContactList from './components/ContactList/ContactList'
 
-import Comp1 from './components/Comp1/Comp1'
-import Comp2 from './components/Comp2/Comp2'
-import Comp3 from './components/Comp3/Comp3'
+import contactsData from '../ContactsData.json'
 
-function App() {
+function App() {  
+  const [contacts, setContacts] = useState(contactsData);
+  const [filter, setFilter] = useState("");
+
+  const addUser = (newUser) => {
+    setContacts((prevContacts) => [...prevContacts, newUser])
+  }
+
+  const deleteUser = (userId) => {
+    const updatedlist = contacts.filter(item => item.id !== userId);
+    setContacts(updatedlist);
+  }
+
+  const filteredList = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+
   return (
-    <>
-      <Comp1 />
-      <Comp2 />
-      <Comp3/>
-    </>
+    <div>
+      <h1>Phonebook</h1>
+      <ContactForm addUser={addUser} />
+      <SearchBox filter={filter} onFilter={setFilter} />
+      <ContactList contactsList={filteredList} deleteUser={deleteUser} />
+    </div>
   )
 }
 
