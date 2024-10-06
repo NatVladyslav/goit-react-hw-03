@@ -16,7 +16,7 @@ const ContactForm = ({addUser}) => {
     .min(2, "Name must be at least 2 characters")
     .max(20, "Name must be less than 20 characters")
     .required("Name is required"),
-  number: Yup.string()
+    number: Yup.string()
     .required("Phone is required")
     .matches(
       phoneNumberRegex,
@@ -25,7 +25,6 @@ const ContactForm = ({addUser}) => {
   })
 
   const initialValues = {
-    id: nanoid(),
     name: "",
     number: ""
   }
@@ -39,12 +38,12 @@ const ContactForm = ({addUser}) => {
       <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
         <Form className={css.formikForm}>
           <label htmlFor={nameFormId}>Name</label>
-        <Field type="text" name="name" id={nameFormId} placeholder="Tom Ford"/>
-        <ErrorMessage name="username" component="span"/>
+        <Field className={css.input} type="text" name="name" id={nameFormId} placeholder="Tom Ford"/>
+        <ErrorMessage className={css.errorMessage} name="name" component="span"/>
           <label htmlFor={numberFormId}>Number</label>
-        <Field type="tel" name="number" id={numberFormId} placeholder="380 XX XXX XX XX "/>
-        <ErrorMessage name="number" component="span"/>
-          <button type='submit'>Add contact</button>
+        <Field className={css.input} type="tel" name="number" id={numberFormId} placeholder="380 XX XXX XX XX "/>
+        <ErrorMessage className={css.errorMessage} name="number" component="span"/>
+          <button className={css.button} type='submit'>Add contact</button>
         </Form>
       </Formik>
   )

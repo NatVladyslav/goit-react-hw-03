@@ -5,8 +5,8 @@ const Contact = ({id, name, number, deleteUser}) => {
   return (
     <div className={css.contactItem}>
       <div className={css.nameAndNumber}>
-        <p><IoMdPerson />  {name}</p>
-        <p><FaPhoneAlt />  {number}</p>
+        <p><IoMdPerson className={css.icon} /> {name}</p>
+        <p><FaPhoneAlt className={css.icon} />   {number}</p>
       </div>
           <button className={css.button} type="button" onClick={() => deleteUser(id)}>Delete</button>
     </div>

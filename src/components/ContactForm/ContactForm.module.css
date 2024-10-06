@@ -3,5 +3,19 @@
     flex-direction: column;
     gap: 10px;
     align-items: start;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 420px;
+}
+.input{
+    width: 400px;
+    height: 30px;
+}
+.button{
+    margin-top: 15px;
+}
+.errorMessage{
+    color: red;
 }
